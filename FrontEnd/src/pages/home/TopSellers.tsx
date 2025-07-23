@@ -15,9 +15,17 @@ import 'swiper/css/navigation';
 
 const categories = ["Choose a genre", "Business", "Fiction", "Horror", "Adventure"]
 
+type Book = {
+    title: string;
+    author: string;
+    price: number;
+    image: string;
+    category: string;
+};
+
 const TopSellers = () => {
-    const [books, setBooks] = useState([]);
-     const [selectedCategory, setSelectedCategory] = useState("Choose a genre");
+    const [books, setBooks] = useState<Book[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState("Choose a genre");
     
     useEffect(() => {
         fetch('books.json')
@@ -27,8 +35,8 @@ const TopSellers = () => {
     }, []);
      
 
-     const filteredBooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase())
-     console.log(books.category)
+    const filteredBooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase());
+    console.log(books.category)
 
     return (
         <div className='py-10'>
