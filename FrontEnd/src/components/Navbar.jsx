@@ -8,7 +8,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { HiOutlineUser } from "react-icons/hi";
 
 import avatarImg from "../assets/avatar.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAuth } from "../context/AuthContext";
 
@@ -20,6 +20,7 @@ const navigation = [
 ];
 
 const Navbar = () => {
+  
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
 
@@ -59,11 +60,9 @@ const Navbar = () => {
               <>
                 <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                   <img
-                    src={avatarImg}
-                    alt=""
-                    className={`size-7 rounded-full ${
-                      currentUser ? "ring-2 ring-blue-500" : ""
-                    }`}
+                    src={currentUser.photoURL || avatarImg}
+                    alt="User Avatar"
+                    className="w-8 h-8 rounded-full cursor-pointer"
                   />
                 </button>
                 {/* show dropdowns */}
