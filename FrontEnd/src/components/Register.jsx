@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form"
 import { useAuth } from '../context/AuthContext';
@@ -7,7 +7,6 @@ import { useAuth } from '../context/AuthContext';
 const Register = () => {
     const [message, setMessage] = useState("");
     const {registerUser, signInWithGoogle} = useAuth();
-     const navigate = useNavigate()
     // console.log(registerUser)
     const {
         register,
@@ -74,7 +73,7 @@ const Register = () => {
         <div className='mt-4'>
             <button 
             onClick={handleGoogleSignIn}
-            className='w-full flex flex-wrap gap-1 items-center justify-center bg-cyan-500 hover:bg-purple-700 text-black font-bold py-2 px-4 rounded focus:outline-none'>
+            className='w-full flex flex-wrap gap-1 items-center justify-center bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none'>
             <FaGoogle  className='mr-2'/>
             Sign in with Google
             </button>
